@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,21 +33,21 @@ export default function RootLayout({
         {/* Header */}
         <header className="p-4 bg-blue-500 text-white">
           <nav className="flex justify-center space-x-4">
-            <a href="/" className="hover:underline">
+            <Link href="/" className="hover:underline">
               Home
-            </a>
-            <a href="/islam" className="hover:underline">
+            </Link>
+            <Link href="/islam" className="hover:underline">
               Islam
-            </a>
-            <a href="/learn" className="hover:underline">
+            </Link>
+            <Link href="/learn" className="hover:underline">
               Learn
-            </a>
-            <a href="/blog" className="hover:underline">
+            </Link>
+            <Link href="/blog" className="hover:underline">
               Blog
-            </a>
-            <a href="/portfolio" className="hover:underline">
+            </Link>
+            <Link href="/portfolio" className="hover:underline">
               Portfolio
-            </a>
+            </Link>
           </nav>
         </header>
 
