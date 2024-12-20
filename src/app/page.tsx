@@ -13,8 +13,8 @@ export default function Home() {
           </ol>
         </p>
         <p className="text-center text-lg text-gray-700 max-w-xl">
-          I'm passionate about building cool projects, exploring meaningful ideas, and helping others
-          along the way. Let’s grow together!
+          I&apos;m passionate about building cool projects, exploring meaningful ideas, and helping others
+          along the way. Let&apos;s grow together!`
         </p>
 
 
