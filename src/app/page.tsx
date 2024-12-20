@@ -6,12 +6,13 @@ export default function Home() {
         <h1 className="text-center text-4xl font-bold mb-4 text-blue-600">MentalChai</h1>
         <p className="text-left text-lg text-gray-700 max-w-xl">
           Welcome to Mentalchai, where I share my journey in
-          <ol className="list-disc list-inside text-left text-lg text-gray-700 max-w-xl mb-4">
-            <li>Tech</li>
-            <li>Personal Growth</li>
-            <li>Islam</li>
-          </ol>
         </p>
+
+        <ol className="list-disc list-inside text-left text-lg text-gray-700 max-w-xl mb-4">
+          <li>Tech</li>
+          <li>Personal Growth</li>
+          <li>Islam</li>
+        </ol>
         <p className="text-center text-lg text-gray-700 max-w-xl">
           I&apos;m passionate about building cool projects, exploring meaningful ideas, and helping others
           along the way. Let&apos;s grow together!

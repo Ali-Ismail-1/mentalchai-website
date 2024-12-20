@@ -1,3 +1,5 @@
+import RootLayout from "../layout";
+
 // src/app/islam/page.tsx
 export default function IslamPage() {
     return (
