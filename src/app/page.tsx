@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
 import styles from "./Home.module.css";
+import '@/styles/markdown-styles.css';
 
 export default function Home() {
   return (
