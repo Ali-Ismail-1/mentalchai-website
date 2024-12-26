@@ -22,52 +22,64 @@ export default function Home() {
           Explore Topics
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          {/* Software Engineering */}
           <Link
             href="/software-engineering"
-            className="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl border border-gray-200 transition"
+            className="relative bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-lg p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition"
           >
-            <h3 className="text-xl font-semibold mb-2 text-blue-800">
-              Software Engineering
-            </h3>
-            <p className="text-gray-600">
-              Discover project ideas, tutorials, and resources to level up your engineering skills.
-            </p>
+            <div className="flex flex-col items-center text-center">
+              <div className="mb-4 text-4xl">💻</div>
+              <h3 className="text-xl font-semibold mb-2">Software Engineering</h3>
+              <p className="text-sm">
+                Discover project ideas, tutorials, and resources to level up your engineering skills.
+              </p>
+            </div>
           </Link>
+
+          {/* Productivity */}
           <Link
             href="/productivity"
-            className="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl border border-gray-200 transition"
+            className="relative bg-gradient-to-r from-green-500 to-green-700 text-white rounded-lg p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition"
           >
-            <h3 className="text-xl font-semibold mb-2 text-green-700">
-              Productivity
-            </h3>
-            <p className="text-gray-600">
-              Master your time with Notion templates, agile planning, and deep work strategies.
-            </p>
+            <div className="flex flex-col items-center text-center">
+              <div className="mb-4 text-4xl">🕒</div>
+              <h3 className="text-xl font-semibold mb-2">Productivity</h3>
+              <p className="text-sm">
+                Master your time with Notion templates, agile planning, and deep work strategies.
+              </p>
+            </div>
           </Link>
+
+          {/* Islamic Resources */}
           <Link
             href="/islam"
-            className="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl border border-gray-200 transition"
+            className="relative bg-gradient-to-r from-purple-500 to-purple-700 text-white rounded-lg p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition"
           >
-            <h3 className="text-xl font-semibold mb-2 text-purple-700">
-              Islamic Resources
-            </h3>
-            <p className="text-gray-600">
-              Explore Bayt ul-Mal, Quran quotes, and resources for Umrah.
-            </p>
+            <div className="flex flex-col items-center text-center">
+              <div className="mb-4 text-4xl">🕌</div>
+              <h3 className="text-xl font-semibold mb-2">Islamic Resources</h3>
+              <p className="text-sm">
+                Explore Bayt ul-Mal, Quran quotes, and resources for Umrah.
+              </p>
+            </div>
           </Link>
+
+          {/* Wellness */}
           <Link
             href="/wellness"
-            className="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl border border-gray-200 transition"
+            className="relative bg-gradient-to-r from-red-500 to-red-700 text-white rounded-lg p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition"
           >
-            <h3 className="text-xl font-semibold mb-2 text-red-700">
-              Wellness
-            </h3>
-            <p className="text-gray-600">
-              Learn about cooking, detoxing, acupressure, and building a healthy lifestyle.
-            </p>
+            <div className="flex flex-col items-center text-center">
+              <div className="mb-4 text-4xl">🍎</div>
+              <h3 className="text-xl font-semibold mb-2">Wellness</h3>
+              <p className="text-sm">
+                Learn about cooking, detoxing, acupressure, and building a healthy lifestyle.
+              </p>
+            </div>
           </Link>
         </div>
       </section>
+
 
       {/* Newsletter Section */}
       <section className="text-center py-12 bg-gray-100">
