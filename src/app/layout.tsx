@@ -39,13 +39,22 @@ export default function RootLayout({
             <Link href="/islam" className="hover:underline">
               Islam
             </Link>
-            <Link href="/learn" className="hover:underline">
+            <Link href="/tech" className="hover:underline">
+              Tech
+            </Link>
+            <Link href="/mindset" className="hover:underline">
+              Mindset
+            </Link>
+            <Link href="/wellness" className="hover:underline">
+              Wellness
+            </Link>
+            <Link href="https://mentalchai.newzenler.com/" className="hover:underline">
               Learn
             </Link>
-            <Link href="/blog" className="hover:underline">
+            <Link href="https://aliismail.beehiiv.com/" className="hover:underline">
               Blog
             </Link>
-            <Link href="/portfolio" className="hover:underline">
+            <Link href="https://github.com/ali-ismail-1" className="hover:underline">
               Portfolio
             </Link>
           </nav>
