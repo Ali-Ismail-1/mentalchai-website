@@ -1,4 +1,7 @@
-## Garlic Rosemary Rack of Lamb
+---
+title: Garlic Rosemary Rack of Lamb
+description: Garlic Rosemary Rack of Lamb
+---
 
 ### **Tools**
 
