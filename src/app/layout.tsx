@@ -79,7 +79,7 @@ export default function RootLayout({
         </header>
 
         {/* Main Content */}
-        <main className="flex-1 p-6">{children}</main>
+        <main className="flex-1 text-gray-800 p-6">{children}</main>
 
         {/* Footer */}
         <footer className="bg-gray-900 text-white py-8">
