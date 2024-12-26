@@ -1,4 +1,5 @@
 // src/app/layout.tsx
+import { FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -31,40 +32,58 @@ export default function RootLayout({
     >
       <body className="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
         {/* Header */}
-        <header className="p-4 bg-blue-500 text-white">
-          <nav className="flex justify-center space-x-4">
-            <Link href="/" className="hover:underline">
+        <header className="p-4 bg-gray-800 text-gray-200 flex justify-between items-center">
+          <nav className="flex space-x-6">
+            <Link href="/" className="hover:text-white">
               Home
             </Link>
-            <Link href="/islam" className="hover:underline">
+            <Link href="/software-engineering" className="hover:text-white">
+              Software Engineering
+            </Link>
+            <Link href="/productivity" className="hover:text-white">
+              Productivity
+            </Link>
+            <Link href="/islam" className="hover:text-white">
               Islam
             </Link>
-            <Link href="/tech" className="hover:underline">
-              Tech
-            </Link>
-            <Link href="/mindset" className="hover:underline">
-              Mindset
-            </Link>
-            <Link href="/wellness" className="hover:underline">
+            <Link href="/wellness" className="hover:text-white">
               Wellness
             </Link>
-            <Link href="https://mentalchai.newzenler.com/" className="hover:underline">
-              Learn
-            </Link>
-            <Link href="https://aliismail.beehiiv.com/" className="hover:underline">
-              Blog
-            </Link>
-            <Link href="https://github.com/ali-ismail-1" className="hover:underline">
-              Portfolio
-            </Link>
           </nav>
+          <div className="flex space-x-4">
+            <Link
+              href="https://github.com/ali-ismail-1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-300 hover:text-white"
+            >
+              <FaGithub />
+            </Link>
+            <Link
+              href="https://www.linkedin.com/in/ali-ismail-35196615/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-300 hover:text-white"
+            >
+              <FaLinkedin />
+            </Link>
+            <Link
+              href="https://x.com/Ali_F_Ismail"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-300 hover:text-white"
+            >
+              <FaTwitter />
+            </Link>
+          </div>
         </header>
 
+
         {/* Main Content */}
-        <main className="flex-1 p-6">{children}</main>
+        <main className="flex-1 p-6 text-gray-200">{children}</main>
 
         {/* Footer */}
-        <footer className="p-4 text-center text-gray-600 bg-gray-100">
+        <footer className="p-4 text-center text-gray-500 bg-gray-900">
           © {new Date().getFullYear()} Mentalchai. All rights reserved.
         </footer>
       </body>

@@ -11,12 +11,14 @@ export default function Home() {
       <section className={styles.section}>
         <h1 className={styles.headingPrimary}>MentalChai</h1>
         <p className="text-left text-lg text-gray-700 max-w-xl">
-          Welcome to Mentalchai, where I share my journey in
+          Welcome to MentalChai: My knowledge hub on
         </p>
         <ol className="list-disc list-inside text-left text-lg text-gray-700 max-w-xl mb-4">
-          <li>Tech</li>
-          <li>Personal Growth</li>
-          <li>Islam</li>
+
+          <li>Software Engineering</li>
+          <li>Productivity</li>
+          <li>Islamic Resources</li>
+          <li>Wellness</li>
         </ol>
         <p className="text-center text-lg text-gray-700 max-w-xl">
           I&apos;m passionate about building cool projects, exploring meaningful ideas, and helping others
@@ -55,6 +57,14 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="text-center py-8">
+        <iframe src="https://embeds.beehiiv.com/4165d527-b030-4e9d-821e-3b76f6ba9374" data-test-id="beehiiv-embed" width="480" height="320" frameBorder="0" scrolling="no" style={{
+          borderRadius: "4px",
+          border: "2px solid #e5e7eb",
+          margin: "0",
+          backgroundColor: "transparent",
+        }}></iframe>
+      </section>
       {/* Social Media Section */}
       <section className="text-center py-8">
         <h2 className="text-2xl font-semibold mb-6 text-blue-500">Social Links</h2>
