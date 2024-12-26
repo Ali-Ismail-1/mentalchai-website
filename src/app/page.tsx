@@ -28,7 +28,7 @@ export default function Home() {
             <div className="flex flex-col items-center text-center">
               <div className="mb-4 text-4xl">💻</div>
               <h3 className="text-xl font-semibold mb-2">Software Engineering</h3>
-              <p className="text-sm">
+              <p className="text-sm text-gray-600">
                 Discover project ideas, tutorials, and resources to level up your engineering skills.
               </p>
             </div>
