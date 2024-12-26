@@ -28,7 +28,7 @@ export default function Home() {
             <div className="flex flex-col items-center text-center">
               <div className="mb-4 text-4xl">💻</div>
               <h3 className="text-xl font-semibold mb-2">Software Engineering</h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm">
                 Discover project ideas, tutorials, and resources to level up your engineering skills.
               </p>
             </div>
@@ -37,7 +37,7 @@ export default function Home() {
           {/* Productivity */}
           <Link
             href="/productivity"
-            className="relative bg-gradient-to-r from-green-500 to-green-700 text-white rounded-lg p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition"
+            className="relative bg-gradient-to-r from-purple-500 to-purple-700 text-white rounded-lg p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition"
           >
             <div className="flex flex-col items-center text-center">
               <div className="mb-4 text-4xl">🕒</div>
@@ -51,7 +51,7 @@ export default function Home() {
           {/* Islamic Resources */}
           <Link
             href="/islam"
-            className="relative bg-gradient-to-r from-purple-500 to-purple-700 text-white rounded-lg p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition"
+            className="relative bg-gradient-to-r from-green-500 to-green-700 text-white rounded-lg p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition"
           >
             <div className="flex flex-col items-center text-center">
               <div className="mb-4 text-4xl">🕌</div>
