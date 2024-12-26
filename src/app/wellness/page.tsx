@@ -2,11 +2,12 @@
 import path from 'path';
 import Link from 'next/link';
 import getFolders from '@/utils/getFolders';
+import { Folder } from '@/types/folder';
 
 export default async function WellnessPage() {
     const dirPath = path.join(process.cwd(), 'src/app/wellness');
 
-    let folders: any[] = [];
+    let folders: Folder[] = [];
     try {
         folders = await getFolders(dirPath);
     }
