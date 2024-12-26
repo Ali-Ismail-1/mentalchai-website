@@ -1,25 +1,20 @@
 // src/app/islam/page.tsx
-import fs from 'fs';
 import path from 'path';
-import matter from 'gray-matter';
 import Link from 'next/link';
+import { getGuides } from '@/utils/getGuides';
+import { Guide } from '@/types/guide';
 
-export default function IslamPage() {
+export default async function IslamPage() {
 
-    const dir = path.join(process.cwd(), 'src', 'app', 'islam');
-    const files = fs.readdirSync(dir).filter(file => file.endsWith('.md'));
+    const dir = path.join(process.cwd(), 'src/app/islam');
 
-    const guides = files.map((file) => {
-        const filePath = path.join(dir, file);
-        const fileContents = fs.readFileSync(filePath, 'utf8');
-        const { data } = matter(fileContents);
-
-        return {
-            slug: file.replace('.md', ''),
-            title: data.title || file.replace('.md', ''),
-            description: data.description || '',
-        };
-    });
+    let guides: Guide[] = [];
+    try {
+        guides = await getGuides(dir);
+    }
+    catch (error) {
+        console.error("Error fetching guides: ", error);
+    }
 
     return (
         <div className="p-6">
