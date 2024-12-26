@@ -33,7 +33,7 @@ export default function RootLayout({
       <body className="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
         {/* Header */}
         <header className="p-4 bg-gray-800 text-gray-200 flex justify-between items-center">
-          <nav className="flex space-x-6">
+          <nav className="flex text-gray-200 space-x-6">
             <Link href="/" className="hover:text-white">
               Home
             </Link>
@@ -79,7 +79,7 @@ export default function RootLayout({
         </header>
 
         {/* Main Content */}
-        <main className="flex-1 p-6 text-gray-200">{children}</main>
+        <main className="flex-1 p-6">{children}</main>
 
         {/* Footer */}
         <footer className="bg-gray-900 text-white py-8">
