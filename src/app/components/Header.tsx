@@ -8,6 +8,9 @@ import { FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
 export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
 
+    // Function to close the menu
+    const closeMenu = () => setMenuOpen(false);
+
     return (
         <header className="p-4 bg-gray-800 text-gray-200 flex justify-between items-center">
             {/* Hamburger Menu Button */}
@@ -58,7 +61,7 @@ export default function Header() {
                 <div className="p-4 flex flex-col h-full">
                     {/* Close Button */}
                     <button
-                        onClick={() => setMenuOpen(false)}
+                        onClick={closeMenu}
                         className="self-end text-gray-300 hover:text-white"
                     >
                         <svg
@@ -79,19 +82,27 @@ export default function Header() {
 
                     {/* Navigation Links */}
                     <nav className="mt-8 space-y-4">
-                        <Link href="/" className="block hover:text-white">
+                        <Link href="/" className="block hover:text-white" onClick={closeMenu}>
                             Home
                         </Link>
-                        <Link href="/software-engineering" className="block hover:text-white">
+                        <Link
+                            href="/software-engineering"
+                            className="block hover:text-white"
+                            onClick={closeMenu}
+                        >
                             Software Engineering
                         </Link>
-                        <Link href="/productivity" className="block hover:text-white">
+                        <Link
+                            href="/productivity"
+                            className="block hover:text-white"
+                            onClick={closeMenu}
+                        >
                             Productivity
                         </Link>
-                        <Link href="/islam" className="block hover:text-white">
+                        <Link href="/islam" className="block hover:text-white" onClick={closeMenu}>
                             Islam
                         </Link>
-                        <Link href="/wellness" className="block hover:text-white">
+                        <Link href="/wellness" className="block hover:text-white" onClick={closeMenu}>
                             Wellness
                         </Link>
                     </nav>
@@ -103,29 +114,28 @@ export default function Header() {
                                 href="https://github.com/ali-ismail-1"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="hover:text-white text-2xl"
+                                className="text-gray-300 hover:text-white text-lg flex items-center"
                             >
-                                <FaGithub />
+                                <FaGithub className="mr-2" /> GitHub
                             </Link>
                             <Link
                                 href="https://www.linkedin.com/in/ali-ismail-35196615/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="hover:text-white text-2xl"
+                                className="text-gray-300 hover:text-white text-lg flex items-center"
                             >
-                                <FaLinkedin />
+                                <FaLinkedin className="mr-2" /> LinkedIn
                             </Link>
                             <Link
-                                href="https://x.com/Ali_F_Ismail"
+                                href="https://twitter.com/Ali_F_Ismail"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="hover:text-white text-2xl"
+                                className="text-gray-300 hover:text-white text-lg flex items-center"
                             >
-                                <FaTwitter />
+                                <FaTwitter className="mr-2" /> Twitter
                             </Link>
                         </div>
                     </div>
-
                 </div>
             </div>
         </header>
