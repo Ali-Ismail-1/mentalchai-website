@@ -22,7 +22,7 @@ export default async function RecipesPage() {
             <ul className="space-y-4">
                 {guides.map((guide) => (
                     <li key={guide.slug}>
-                        <Link href={`/wellness/recipes/${guide.slug}`}>
+                        <Link className='link' href={`/wellness/recipes/${guide.slug}`}>
                             {guide.title}
                         </Link>
                     </li>

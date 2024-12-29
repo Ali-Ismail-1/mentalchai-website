@@ -22,7 +22,7 @@ export default async function IslamPage() {
             <ul className="space-y-4">
                 {guides.map((guide) => (
                     <li key={guide.slug}>
-                        <Link href={`/islam/${guide.slug}`}>
+                        <Link className='link' href={`/islam/${guide.slug}`}>
                             {guide.title}
                         </Link>
                     </li>
