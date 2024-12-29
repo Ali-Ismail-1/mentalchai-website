@@ -23,7 +23,7 @@ export default async function WellnessPage() {
                     <ul className="space-y-4">
                         {folders.map((folder) => (
                             <li key={folder}>
-                                <Link href={`/wellness/${folder}`}>
+                                <Link className='link' href={`/wellness/${folder}`}>
                                     {folder.charAt(0).toUpperCase() + folder.slice(1)}
                                 </Link>
                             </li>
