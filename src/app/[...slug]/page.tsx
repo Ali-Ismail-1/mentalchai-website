@@ -6,14 +6,16 @@ import { remark } from 'remark';
 import html from 'remark-html';
 import Link from 'next/link';
 import getAllMarkdownFiles from '@/utils/getAllMarkdownFiles';
-import { PageProps } from '@/types/pageProps';
+
 /**
  * Recursively finds all Markdown files in a directory
  * @param {string} dirPath - The directory path to read files from
  * @returns {string[]} - An array of file paths
  */
 
-export default async function Page({ params }: PageProps) {
+export default async function Page({ params }: {
+  params: { slug: string[] };
+}) {
   const slugArray = params.slug;
   const slug = slugArray[slugArray.length - 1]; // Get the last slug
 
@@ -71,7 +73,9 @@ export default async function Page({ params }: PageProps) {
 /**
  * Generate paths for static generation
  */
-export async function generateStaticParams(): Promise<{ params: { slug: string[] } }[]> {
+export async function generateStaticParams(): Promise<
+  { params: { slug: string[] } }[]
+> {
   const basePath = path.join(process.cwd(), 'src/app');
 
   // Get all Markdown files under src/app
@@ -88,7 +92,7 @@ export async function generateStaticParams(): Promise<{ params: { slug: string[]
       slugArray[slugArray.length - 1] = data.slug; // Replace last slug with data.slug
     }
 
-    return { slug: slugArray };
+    return { params: { slug: slugArray } }; // Wrap slug in params
   });
 
   return paths;
