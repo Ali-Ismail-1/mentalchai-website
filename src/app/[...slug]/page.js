@@ -1,41 +1,5 @@
 // src/app/[slug]/page.js
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-import { remark } from 'remark';
-import html from 'remark-html';
-import Link from 'next/link';
-import getAllMarkdownFiles from '@/utils/getAllMarkdownFiles';
-
-export async function generateStaticParams(): Promise<
-  { params: { slug: string[] } }[]
-> {
-  const basePath = path.join(process.cwd(), 'src/app');
-
-  const markdownFiles = getAllMarkdownFiles(basePath);
-
-  const paths = markdownFiles.map((file) => {
-    const fileContents = fs.readFileSync(file, 'utf8');
-    const { data } = matter(fileContents);
-    const relativePath = path.relative(basePath, file);
-    const slugArray = relativePath.replace(/\.md$/, '').split(path.sep);
-
-    if (data.slug) {
-      slugArray[slugArray.length - 1] = data.slug;
-    }
-
-    return { params: { slug: slugArray } };
-  });
-
-  return paths;
-}
-
-
-export default async function Page({
-  params,
-}: {
-  params: { slug: string[] };
-}) {
+export default async function Page({ params }) {
   const slugArray = params.slug;
   const slug = slugArray[slugArray.length - 1];
 
