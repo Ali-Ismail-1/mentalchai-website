@@ -1,4 +1,12 @@
 // src/app/[slug]/page.js
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+import { remark } from 'remark';
+import html from 'remark-html';
+import Link from 'next/link';
+import getAllMarkdownFiles from '@/utils/getAllMarkdownFiles';
+
 export default async function Page({ params }) {
   const slugArray = params.slug;
   const slug = slugArray[slugArray.length - 1];
