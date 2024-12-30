@@ -7,16 +7,6 @@ import html from 'remark-html';
 import Link from 'next/link';
 import getAllMarkdownFiles from '@/utils/getAllMarkdownFiles';
 
-interface Params {
-  slug: string[];
-}
-
-// interface PageProps {
-//   params: {
-//     slug: string[];
-//   };
-// }
-
 export async function generateStaticParams(): Promise<
   { params: { slug: string[] } }[]
 > {
