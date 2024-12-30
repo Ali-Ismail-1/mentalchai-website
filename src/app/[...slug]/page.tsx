@@ -71,7 +71,7 @@ export default async function Page({ params }: PageProps) {
 /**
  * Generate paths for static generation
  */
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<{ params: { slug: string[] } }[]> {
   const basePath = path.join(process.cwd(), 'src/app');
 
   // Get all Markdown files under src/app
