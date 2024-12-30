@@ -6,24 +6,40 @@ import { remark } from 'remark';
 import html from 'remark-html';
 import Link from 'next/link';
 
+/**
+ * Recursively finds all Markdown files in a directory
+ * @param {string} dirPath - The directory path to read files from
+ * @returns {string[]} - An array of file paths
+ */
+export function getAllMarkdownFiles(dirPath) {
+  const entries = fs.readdirSync(dirPath, { withFileTypes: true });
+  const files = entries.flatMap((entry) => {
+    const fullPath = path.join(dirPath, entry.name);
+    return entry.isDirectory() ? getAllMarkdownFiles(fullPath) : fullPath;
+  });
+  return files.filter((file) => file.endsWith('.md'));
+}
+
 export default async function Page({ params }) {
-  const slugArray = params.slug; // No need to await params.slug
+  const slugArray = params.slug;
+  const slug = slugArray[slugArray.length - 1]; // Get the last slug
 
-  // Construct the file path dynamically
-  const filePath =
-    path.join(
-      process.cwd(),
-      'src/app',
-      ...slugArray, // Spread the array to form the path
-    ) + '.md';
+  const markdownFiles = getAllMarkdownFiles(
+    path.join(process.cwd(), 'src/app'),
+  );
 
-  // Check if the file exists
-  if (!fs.existsSync(filePath)) {
+  const matchingFile = markdownFiles.find((file) => {
+    const fileContents = fs.readFileSync(file, 'utf8');
+    const { data } = matter(fileContents);
+    const fileSlug = data.slug || path.basename(file, '.md');
+    return fileSlug === slug; // Check if the slug matches
+  });
+
+  if (!matchingFile) {
     throw new Error('Page not found'); // Safely signal 404
   }
 
-  // Read and process the Markdown file
-  const fileContents = fs.readFileSync(filePath, 'utf8');
+  const fileContents = fs.readFileSync(matchingFile, 'utf8');
   const { content, data } = matter(fileContents);
 
   const processedContent = await remark().use(html).process(content);
@@ -51,7 +67,7 @@ export default async function Page({ params }) {
         {' > '}
         {breadcrumbs}
       </nav>
-      <article className="prose">
+      <article className="prose mx-auto">
         <h1>{data.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
       </article>
@@ -59,21 +75,27 @@ export default async function Page({ params }) {
   );
 }
 
+/**
+ * Generate paths for static generation
+ */
 export async function generateStaticParams() {
   const basePath = path.join(process.cwd(), 'src/app');
-  const categories = ['islam', 'tech', 'mindset', 'wellness'];
+
+  // Get all Markdown files under src/app
+  const markdownFiles = getAllMarkdownFiles(basePath);
 
   // Generate paths for Markdown files in categories
-  const paths = categories.flatMap((category) => {
-    const categoryPath = path.join(basePath, category);
-    if (!fs.existsSync(categoryPath)) return [];
+  const paths = markdownFiles.flatMap((file) => {
+    const fileContents = fs.readFileSync(file, 'utf8');
+    const { data } = matter(fileContents);
+    const relativePath = path.relative(basePath, file);
+    const slugArray = relativePath.replace(/\.md$/, '').split(path.sep);
 
-    return fs
-      .readdirSync(categoryPath)
-      .filter((file) => file.endsWith('.md'))
-      .map((file) => ({
-        slug: [category, file.replace('.md', '')], // Generate nested slug array
-      }));
+    if (data.slug) {
+      slugArray[slugArray.length - 1] = data.slug; // Replace last slug with data.slug
+    }
+
+    return { slug: slugArray };
   });
 
   return paths;

@@ -9,8 +9,7 @@ export default function Home() {
       <section className="bg-blue-900 text-white text-center py-16">
         <h1 className="text-5xl font-bold mb-4">MentalChai</h1>
         <p className="text-lg max-w-2xl mx-auto">
-          Your hub for knowledge and growth in <br /> Software Engineering, Productivity,
-          Islam, and Wellness.
+          Your hub for knowledge and growth in <br /> Software Engineering, Excellence, and Wellness.
         </p>
       </section>
 
@@ -19,7 +18,7 @@ export default function Home() {
         <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">
           Explore Topics
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {/* Software Engineering */}
           <Link
             href="/software-engineering"
@@ -34,30 +33,17 @@ export default function Home() {
             </div>
           </Link>
 
-          {/* Productivity */}
-          <Link
-            href="/productivity"
-            className="relative bg-gradient-to-r from-purple-500 to-purple-700 text-white rounded-lg p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition"
-          >
-            <div className="flex flex-col items-center text-center">
-              <div className="mb-4 text-4xl">🕒</div>
-              <h3 className="text-xl font-semibold mb-2">Productivity</h3>
-              <p className="text-sm">
-                Master your time with Notion templates, agile planning, and deep work strategies.
-              </p>
-            </div>
-          </Link>
 
-          {/* Islamic Resources */}
+          {/* Ihsan Resources */}
           <Link
-            href="/islam"
+            href="/ihsan"
             className="relative bg-gradient-to-r from-green-500 to-green-700 text-white rounded-lg p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition"
           >
             <div className="flex flex-col items-center text-center">
-              <div className="mb-4 text-4xl">🕌</div>
-              <h3 className="text-xl font-semibold mb-2">Islamic Resources</h3>
+              <div className="mb-4 text-4xl">🌟</div>
+              <h3 className="text-xl font-semibold mb-2">Ihsan - Excellence</h3>
               <p className="text-sm">
-                Explore Bayt ul-Mal, Quran quotes, and resources for Umrah.
+                Living with excellence means mastering your time, energy, and self to achieve your goals.
               </p>
             </div>
           </Link>

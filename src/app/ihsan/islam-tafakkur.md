@@ -1,6 +1,7 @@
 ---
 title: Tafakkur - The Art of Deep Reflection
 description: A vital spiritual practice in Islam
+slug: tafakkur-the-art-of-deep-reflection
 ---
 
 ## Tafakkur

@@ -42,11 +42,8 @@ export default function Header() {
                 <Link href="/software-engineering" className="hover:text-white">
                     Software Engineering
                 </Link>
-                <Link href="/productivity" className="hover:text-white">
-                    Productivity
-                </Link>
-                <Link href="/islam" className="hover:text-white">
-                    Islam
+                <Link href="/ihsan" className="hover:text-white">
+                    Ihsan
                 </Link>
                 <Link href="/wellness" className="hover:text-white">
                     Wellness

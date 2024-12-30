@@ -18,7 +18,7 @@ export async function getGuides(dirPath: string): Promise<Guide[]> {
     const { data } = matter(fileContents);
 
     return {
-      slug: file.replace('.md', ''),
+      slug: data.slug || file.replace('.md', ''),
       title: data.title || file.replace('.md', ''),
       description: data.description || '',
     };

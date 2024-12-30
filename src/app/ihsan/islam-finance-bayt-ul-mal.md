@@ -1,11 +1,12 @@
 ---
 title: Bayt ul-Mal
 description: Shariah-compliant financial security for Muslims in America
+slug: bayt-ul-mal
 ---
 
 ## What is Bayt ul Mal?
 
-Bayt ul Mal, or "House of Wealth," is a Shariah-compliant financial planning solution designed specifically for Muslims in America. The mission is to provide financial security through ethical practices that align with Islamic principles.
+[Bayt ul-Mal](https://www.baytulmal.info/), or "House of Wealth," is a Shariah-compliant financial planning solution designed specifically for Muslims in America. The mission is to provide financial security through ethical practices that align with Islamic principles.
 
 Every Muslim family deserves peace of mind knowing their wealth is managed responsibly, their loved ones are cared for, and their actions reflect their faith.
 
