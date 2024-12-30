@@ -1,5 +1,4 @@
 // src/app/[slug]/page.js
-import { FC } from 'react';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -8,13 +7,41 @@ import html from 'remark-html';
 import Link from 'next/link';
 import getAllMarkdownFiles from '@/utils/getAllMarkdownFiles';
 
-interface PageProps {
-  params: {
-    slug: string[];
-  };
+interface Params {
+  slug: string[];
 }
 
-const Page: FC<PageProps> = async ({ params }) => {
+// interface PageProps {
+//   params: {
+//     slug: string[];
+//   };
+// }
+
+export async function generateStaticParams(): Promise<
+  { params: { slug: string[] } }[]
+> {
+  const basePath = path.join(process.cwd(), 'src/app');
+
+  const markdownFiles = getAllMarkdownFiles(basePath);
+
+  const paths = markdownFiles.map((file) => {
+    const fileContents = fs.readFileSync(file, 'utf8');
+    const { data } = matter(fileContents);
+    const relativePath = path.relative(basePath, file);
+    const slugArray = relativePath.replace(/\.md$/, '').split(path.sep);
+
+    if (data.slug) {
+      slugArray[slugArray.length - 1] = data.slug;
+    }
+
+    return { params: { slug: slugArray } }; // Ensure proper structure
+  });
+
+  return paths;
+}
+
+export default async function Page({ params }: { params: Params }) {
+
   const slugArray = params.slug;
   const slug = slugArray[slugArray.length - 1]; // Get the last slug
 
@@ -69,4 +96,3 @@ const Page: FC<PageProps> = async ({ params }) => {
   );
 };
 
-export default Page;
