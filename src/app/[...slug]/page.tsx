@@ -6,13 +6,14 @@ import { remark } from 'remark';
 import html from 'remark-html';
 import Link from 'next/link';
 import getAllMarkdownFiles from '@/utils/getAllMarkdownFiles';
+import { PageProps } from '@/types/pageProps';
 /**
  * Recursively finds all Markdown files in a directory
  * @param {string} dirPath - The directory path to read files from
  * @returns {string[]} - An array of file paths
  */
 
-export default async function Page({ params }) {
+export default async function Page({ params }: PageProps) {
   const slugArray = params.slug;
   const slug = slugArray[slugArray.length - 1]; // Get the last slug
 
