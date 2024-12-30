@@ -5,20 +5,12 @@ import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
 import Link from 'next/link';
-
+import getAllMarkdownFiles from '@/utils/getAllMarkdownFiles';
 /**
  * Recursively finds all Markdown files in a directory
  * @param {string} dirPath - The directory path to read files from
  * @returns {string[]} - An array of file paths
  */
-export function getAllMarkdownFiles(dirPath) {
-  const entries = fs.readdirSync(dirPath, { withFileTypes: true });
-  const files = entries.flatMap((entry) => {
-    const fullPath = path.join(dirPath, entry.name);
-    return entry.isDirectory() ? getAllMarkdownFiles(fullPath) : fullPath;
-  });
-  return files.filter((file) => file.endsWith('.md'));
-}
 
 export default async function Page({ params }) {
   const slugArray = params.slug;
