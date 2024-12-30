@@ -34,16 +34,20 @@ export async function generateStaticParams(): Promise<
       slugArray[slugArray.length - 1] = data.slug;
     }
 
-    return { params: { slug: slugArray } }; // Ensure proper structure
+    return { params: { slug: slugArray } };
   });
 
   return paths;
 }
 
-export default async function Page({ params }: { params: Params }) {
 
+export default async function Page({
+  params,
+}: {
+  params: { slug: string[] };
+}) {
   const slugArray = params.slug;
-  const slug = slugArray[slugArray.length - 1]; // Get the last slug
+  const slug = slugArray[slugArray.length - 1];
 
   const markdownFiles = getAllMarkdownFiles(
     path.join(process.cwd(), 'src/app'),
@@ -53,11 +57,11 @@ export default async function Page({ params }: { params: Params }) {
     const fileContents = fs.readFileSync(file, 'utf8');
     const { data } = matter(fileContents);
     const fileSlug = data.slug || path.basename(file, '.md');
-    return fileSlug === slug; // Check if the slug matches
+    return fileSlug === slug;
   });
 
   if (!matchingFile) {
-    throw new Error('Page not found'); // Safely signal 404
+    throw new Error('Page not found');
   }
 
   const fileContents = fs.readFileSync(matchingFile, 'utf8');
@@ -66,7 +70,6 @@ export default async function Page({ params }: { params: Params }) {
   const processedContent = await remark().use(html).process(content);
   const contentHtml = processedContent.toString();
 
-  // Generate breadcrumbs
   const breadcrumbs = slugArray.map((slug, index) => {
     const href = '/' + slugArray.slice(0, index + 1).join('/');
     return (
@@ -94,5 +97,4 @@ export default async function Page({ params }: { params: Params }) {
       </article>
     </div>
   );
-};
-
+}
