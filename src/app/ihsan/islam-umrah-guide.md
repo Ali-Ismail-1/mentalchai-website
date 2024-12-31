@@ -1,6 +1,7 @@
 ---
 title: Ultimate Umrah Guide
 description: Everything you need to know to prepare for Umrah.
+slug: ultimate-umrah-guide
 ---
 
 ## Items

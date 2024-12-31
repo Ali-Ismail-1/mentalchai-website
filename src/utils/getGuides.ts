@@ -16,9 +16,10 @@ export async function getGuides(dirPath: string): Promise<Guide[]> {
     const filePath = path.join(dirPath, file);
     const fileContents = fs.readFileSync(filePath, 'utf8');
     const { data } = matter(fileContents);
+    const slug = data.slug || file.replace('.md', '');
 
     return {
-      slug: file.replace('.md', ''),
+      slug,
       title: data.title || file.replace('.md', ''),
       description: data.description || '',
     };
