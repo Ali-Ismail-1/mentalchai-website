@@ -48,6 +48,9 @@ export default function Header() {
                 <Link href="/wellness" className="hover:text-white">
                     Wellness
                 </Link>
+                <Link href="https://aliismail.beehiiv.com/" target="_blank" className="hover:text-white">
+                    Blog
+                </Link>
             </nav>
 
             {/* Mobile Slide-in Menu */}
@@ -101,6 +104,9 @@ export default function Header() {
                         </Link>
                         <Link href="/wellness" className="block hover:text-white" onClick={closeMenu}>
                             Wellness
+                        </Link>
+                        <Link href="https://aliismail.beehiiv.com/" target="_blank" className="hover:text-white">
+                            Blog
                         </Link>
                     </nav>
 
