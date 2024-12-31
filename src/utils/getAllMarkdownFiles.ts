@@ -7,9 +7,12 @@ import path from 'path';
  * @returns {string[]} - An array of file paths
  */
 export default function getAllMarkdownFiles(dirPath: string): string[] {
-  const entries: fs.Dirent[] = fs.readdirSync(dirPath, { withFileTypes: true });
+  const absolutePath = path.join(process.cwd(), 'public', dirPath);
+  const entries: fs.Dirent[] = fs.readdirSync(absolutePath, {
+    withFileTypes: true,
+  });
   const files: string[] = entries.flatMap((entry) => {
-    const fullPath = path.join(dirPath, entry.name);
+    const fullPath = path.join(absolutePath, entry.name);
     return entry.isDirectory() ? getAllMarkdownFiles(fullPath) : fullPath;
   });
   return files.filter((file) => file.endsWith('.md'));

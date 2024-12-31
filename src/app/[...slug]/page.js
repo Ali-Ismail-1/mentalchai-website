@@ -5,15 +5,13 @@ import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
 import Link from 'next/link';
-import getAllMarkdownFiles from '@/utils/getAllMarkdownFiles';
 
 export default async function Page({ params }) {
   const slugArray = params.slug;
   const slug = slugArray[slugArray.length - 1];
 
-  const markdownFiles = getAllMarkdownFiles(
-    path.join(process.cwd(), 'src/app'),
-  );
+  const markdownDir = path.join(process.cwd(), 'public/content/markdown');
+  const markdownFiles = getMarkdownFiles(markdownDir);
 
   const matchingFile = markdownFiles.find((file) => {
     const fileContents = fs.readFileSync(file, 'utf8');
@@ -23,7 +21,7 @@ export default async function Page({ params }) {
   });
 
   if (!matchingFile) {
-    throw new Error('Page not found');
+    throw new Error(`Page not found for: ${slug}`);
   }
 
   const fileContents = fs.readFileSync(matchingFile, 'utf8');
@@ -59,4 +57,19 @@ export default async function Page({ params }) {
       </article>
     </div>
   );
+}
+
+// Utility function to get all markdown files in a directory
+/**
+ * Recursively finds all Markdown files in a directory
+ * @param {string} dirPath - The directory path to read files from
+ * @returns {string[]} - An array of file paths
+ */
+function getMarkdownFiles(dir) {
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  const files = entries.flatMap((entry) => {
+    const fullPath = path.join(dir, entry.name);
+    return entry.isDirectory() ? getMarkdownFiles(fullPath) : fullPath;
+  });
+  return files.filter((file) => file.endsWith('.md'));
 }
