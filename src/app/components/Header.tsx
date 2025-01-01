@@ -3,7 +3,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaHome, FaCode, FaStar, FaLeaf, FaBlog, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+
 
 export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -82,63 +83,51 @@ export default function Header() {
 
                     {/* Navigation Links */}
                     <nav className="mt-8 space-y-4">
-                        <Link href="/" className="block hover:text-white" onClick={closeMenu}>
-                            Home
+                        <Link href="/" className="text-gray-300 hover:text-white text-lg flex items-center" onClick={closeMenu}>
+                            <FaHome className="mr-2" /> Home
                         </Link>
                         <Link
                             href="/software-engineering"
-                            className="block hover:text-white"
+                            className="text-gray-300 hover:text-white text-lg flex items-center"
                             onClick={closeMenu}
                         >
-                            Software Engineering
+                            <FaCode className="mr-2" /> Software Engineering
+                        </Link>
+                        <Link href="/ihsan" className="text-gray-300 hover:text-white text-lg flex items-center" onClick={closeMenu}>
+                            <FaStar className="mr-2" /> Ihsan
+                        </Link>
+                        <Link href="/wellness" className="text-gray-300 hover:text-white text-lg flex items-center" onClick={closeMenu}>
+                            <FaLeaf className="mr-2" /> Wellness
+                        </Link>
+                        <Link href="https://aliismail.beehiiv.com/" target="_blank" className="text-gray-300 hover:text-white text-lg flex items-center">
+                            <FaBlog className="mr-2" /> Blog
                         </Link>
                         <Link
-                            href="/productivity"
-                            className="block hover:text-white"
-                            onClick={closeMenu}
+                            href="https://github.com/ali-ismail-1"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-300 hover:text-white text-lg flex items-center"
                         >
-                            Productivity
+                            <FaGithub className="mr-2" /> GitHub
                         </Link>
-                        <Link href="/islam" className="block hover:text-white" onClick={closeMenu}>
-                            Islam
+                        <Link
+                            href="https://www.linkedin.com/in/ali-ismail-35196615/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-300 hover:text-white text-lg flex items-center"
+                        >
+                            <FaLinkedin className="mr-2" /> LinkedIn
                         </Link>
-                        <Link href="/wellness" className="block hover:text-white" onClick={closeMenu}>
-                            Wellness
-                        </Link>
-                        <Link href="https://aliismail.beehiiv.com/" target="_blank" className="hover:text-white">
-                            Blog
+                        <Link
+                            href="https://twitter.com/Ali_F_Ismail"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-300 hover:text-white text-lg flex items-center"
+                        >
+                            <FaTwitter className="mr-2" /> Twitter
                         </Link>
                     </nav>
 
-                    {/* Social Icons Row */}
-                    <div className="mt-6 space-y-4">
-                        <div className="flex items-center space-x-4">
-                            <Link
-                                href="https://github.com/ali-ismail-1"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-gray-300 hover:text-white text-lg flex items-center"
-                            >
-                                <FaGithub className="mr-2" /> GitHub
-                            </Link>
-                            <Link
-                                href="https://www.linkedin.com/in/ali-ismail-35196615/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-gray-300 hover:text-white text-lg flex items-center"
-                            >
-                                <FaLinkedin className="mr-2" /> LinkedIn
-                            </Link>
-                            <Link
-                                href="https://twitter.com/Ali_F_Ismail"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-gray-300 hover:text-white text-lg flex items-center"
-                            >
-                                <FaTwitter className="mr-2" /> Twitter
-                            </Link>
-                        </div>
-                    </div>
                 </div>
             </div>
         </header>
