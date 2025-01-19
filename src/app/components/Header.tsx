@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { FaHome, FaCode, FaStar, FaLeaf, FaBlog, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaHome, FaStar, FaLeaf, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 
 export default function Header() {
@@ -40,17 +40,11 @@ export default function Header() {
                 <Link href="/" className="hover:text-white">
                     Home
                 </Link>
-                <Link href="/software-engineering" className="hover:text-white">
-                    Software Engineering
-                </Link>
                 <Link href="/ihsan" className="hover:text-white">
                     Ihsan
                 </Link>
                 <Link href="/wellness" className="hover:text-white">
                     Wellness
-                </Link>
-                <Link href="https://aliismail.beehiiv.com/" target="_blank" className="hover:text-white">
-                    Blog
                 </Link>
             </nav>
 
@@ -86,21 +80,11 @@ export default function Header() {
                         <Link href="/" className="text-gray-300 hover:text-white text-lg flex items-center" onClick={closeMenu}>
                             <FaHome className="mr-2" /> Home
                         </Link>
-                        <Link
-                            href="/software-engineering"
-                            className="text-gray-300 hover:text-white text-lg flex items-center"
-                            onClick={closeMenu}
-                        >
-                            <FaCode className="mr-2" /> Software Engineering
-                        </Link>
                         <Link href="/ihsan" className="text-gray-300 hover:text-white text-lg flex items-center" onClick={closeMenu}>
                             <FaStar className="mr-2" /> Ihsan
                         </Link>
                         <Link href="/wellness" className="text-gray-300 hover:text-white text-lg flex items-center" onClick={closeMenu}>
                             <FaLeaf className="mr-2" /> Wellness
-                        </Link>
-                        <Link href="https://aliismail.beehiiv.com/" target="_blank" className="text-gray-300 hover:text-white text-lg flex items-center">
-                            <FaBlog className="mr-2" /> Blog
                         </Link>
                         <Link
                             href="https://github.com/ali-ismail-1"
