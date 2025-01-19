@@ -34,7 +34,7 @@ The Nahdi Pharmacy, conveniently located in the Clock Tower near the Haram in Ma
 
 The Clock Tower Museum, located in the upper floors of the Makkah Royal Clock Tower, offers a fascinating journey through time, astronomy, and Islamic heritage. It features exhibits on ancient timekeeping, the construction of the iconic clock, and celestial movements, alongside breathtaking panoramic views of the Grand Mosque. Visiting the museum is a unique opportunity to explore both science and spirituality in the heart of Makkah.
 
-- [Pay Fidya online]()
+- [Pay Fidya online](https://www.adahi.org/en/pages/buyritual.aspx#/neworder)
 
 If you need to pay fidya during your Umrah journey, this website provides a convenient and reliable option to fulfill your obligation. Paying fidya ensures your acts of worship are complete while benefiting those in need. Use this resource to make your payment with ease and focus on the spiritual aspects of your pilgrimage.
 

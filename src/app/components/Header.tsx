@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { FaHome, FaCode, FaStar, FaLeaf, FaBlog, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaHome, FaStar, FaLeaf, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 
 export default function Header() {
