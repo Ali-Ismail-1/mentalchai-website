@@ -19,19 +19,6 @@ export default function Home() {
           Explore Topics
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {/* Software Engineering */}
-          <Link
-            href="/software-engineering"
-            className="relative bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-lg p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition"
-          >
-            <div className="flex flex-col items-center text-center">
-              <div className="mb-4 text-4xl">💻</div>
-              <h3 className="text-xl font-semibold mb-2">Software Engineering</h3>
-              <p className="text-sm">
-                Discover project ideas, tutorials, and resources to level up your engineering skills.
-              </p>
-            </div>
-          </Link>
 
 
           {/* Ihsan Resources */}
@@ -65,7 +52,7 @@ export default function Home() {
       </section>
 
 
-      {/* Newsletter Section */}
+      {/* Newsletter Section
       <section className="text-center py-12 bg-gray-100">
         <h2 className="text-2xl font-bold mb-4 text-gray-800">Join the Newsletter</h2>
         <p className="text-gray-700 mb-6">
@@ -81,7 +68,7 @@ export default function Home() {
             backgroundColor: "transparent",
           }}
         ></iframe>
-      </section>
+      </section> */}
 
 
     </div>
