@@ -159,17 +159,14 @@ export default function Home() {
 
       {/* Newsletter Re-invite */}
       <section className="py-12 border-t border-[#E7E2DA] bg-[#F5F1EB]">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <h3 className="text-2xl font-bold text-[#333333] mb-6">Stay in the loop</h3>
-          <p className="text-lg text-[#4B5D67] mb-6">
-            Join our newsletter to receive updates, guides, and exclusive content.
-          </p>
-          <Link
-            href="/newsletter"
-            className="inline-flex items-center justify-center rounded-md bg-[#FFC857] text-[#333333] px-5 py-3 font-medium shadow hover:bg-[#ffda79] transition-colors"
-          >
-            Join the Newsletter
-          </Link>
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
+          <h3 className="text-2xl font-bold text-[#333333]">Clarity, weekly. Straight to your inbox.</h3>
+          <p className="text-[#4B5D67] mt-2">Calm, grounded, and practical notes you can use right away.</p>
+          <div className="mt-6">
+            <Link href="/newsletter" className="inline-flex rounded-md bg-[#FFC857] text-[#333333] px-5 py-3 font-medium shadow hover:bg-[#ffda79]">
+              Join the Newsletter
+            </Link>
+          </div>
         </div>
       </section>
     </div>
