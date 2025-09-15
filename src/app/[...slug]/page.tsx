@@ -9,6 +9,7 @@ import { ContentMeta as ContentMetaSchema } from '@/types/content';
 import type { ContentMeta } from '@/types/content';
 import ContentLayout from '@/app/components/ContentLayout';
 import Breadcrumbs from '@/app/components/Breadcrumbs';
+import { walkAllMd } from '@/lib/content';
 
 const CONTENT_ROOT = path.join(process.cwd(), 'public', 'content', 'markdown');
 
@@ -64,7 +65,7 @@ export default async function Page({ params }: PageProps) {
   const { slug: slugArray } = await params;
   const slug = slugArray[slugArray.length - 1];
 
-  const markdownFiles = walkMd(CONTENT_ROOT);
+  const markdownFiles = walkAllMd();
 
   const matchingFile = markdownFiles.find((file: string) => {
     const fileContents = fs.readFileSync(file, 'utf8');
