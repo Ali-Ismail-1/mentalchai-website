@@ -1,19 +1,35 @@
 import type { Config } from 'tailwindcss';
+import typography from '@tailwindcss/typography';
 
-export default {
+const config: Config = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/**/*.{js,ts,jsx,tsx}',
+    './src/**/*.{ts,tsx,mdx,md}',
   ],
   theme: {
     extend: {
       colors: {
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
+        calm: {
+          beige: 'var(--color-calm-beige)',
+          charcoal: 'var(--color-calm-charcoal)',
+          grayblue: 'var(--color-calm-grayblue)',
+          sand: 'var(--color-calm-sand)',
+          base: "#FAFAF8",     // soft off-white (backgrounds)
+          sage: "#A8BDA0",     // grounded green, natural          
+        },
+        vibrant: {
+          // amber: 'var(--color-vibrant-amber)',
+          // coral: 'var(--color-vibrant-coral)',
+          // indigo: 'var(--color-vibrant-indigo)',
+          // teal: 'var(--color-vibrant-teal)',
+          amber: "#E6B74E",    // warm CTA (softer golden amber)
+          teal: "#2AB7CA",     // fresh clarity accent
+          coral: "#F25F5C",    // energy + creativity
+          indigo: "#3F51B5",   // depth, reflection
+        },
       },
     },
   },
-  plugins: [require('@tailwindcss/typography')],
-} satisfies Config;
+  plugins: [typography],
+};
+
+export default config;

@@ -5,6 +5,15 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --color-calm-beige: #f5f1eb;
+  --color-calm-charcoal: #333333;
+  --color-calm-grayblue: #4b5d67;
+  --color-calm-sand: #e7e2da;
+
+  --color-vibrant-teal: #2ab7ca;
+  --color-vibrant-amber: #e6b74e; /* softened amber */
+  --color-vibrant-coral: #f25f5c;
+  --color-vibrant-indigo: #3f51b5;
 }
 
 @media (prefers-color-scheme: dark) {

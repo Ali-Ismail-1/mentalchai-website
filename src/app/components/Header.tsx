@@ -1,119 +1,96 @@
 // src/app/components/Header.tsx
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
-import { FaHome, FaStar, FaLeaf, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { FiMenu, FiX } from 'react-icons/fi';
+import { navigation } from '@/lib/site';
 
+function NavLink({ href, label }: { href: string; label: string }) {
+  const pathname = usePathname();
+  const active = href === '/'
+    ? pathname === '/'
+    : pathname.startsWith(href);
+  return (
+    <Link
+      href={href}
+      className={`transition-colors ${active ? 'text-[#333333]' : 'text-[#4B5D67] hover:text-[#333333]'}`}
+    >
+      {label}
+    </Link>
+  );
+}
 
 export default function Header() {
-    const [menuOpen, setMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
-    // Function to close the menu
-    const closeMenu = () => setMenuOpen(false);
+  useEffect(() => {
+    const onEsc = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false);
+    document.addEventListener('keydown', onEsc);
+    return () => document.removeEventListener('keydown', onEsc);
+  }, []);
 
-    return (
-        <header className="p-4 bg-gray-800 text-gray-200 flex justify-between items-center">
-            {/* Hamburger Menu Button */}
-            <button
-                onClick={() => setMenuOpen(!menuOpen)}
-                className="md:hidden text-gray-300 hover:text-white"
+  return (
+    <header className="sticky top-0 z-50 bg-[#F5F1EB]/90 backdrop-blur border-b border-[#E7E2DA] shadow-sm">
+      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-2 focus:z-50 bg-[#FFC857] text-[#333333] px-3 py-1 rounded">
+        Skip to content
+      </a>
+      <div className="mx-auto max-w-7xl h-14 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <Link href="/" className="text-[#333333] font-semibold tracking-tight text-lg">
+          Mentalchai
+        </Link>
+
+        {/* Desktop nav */}
+        <nav className="hidden md:flex items-center gap-8">
+          {navigation.primary.map((item) => (
+            <NavLink key={item.href} href={item.href} label={item.label} />
+          ))}
+          <Link
+            href={navigation.cta.href}
+            className="rounded-md bg-[#FFC857] text-[#333333] px-3 py-2 font-medium shadow hover:bg-[#ffda79] transition-colors"
+          >
+            {navigation.cta.label}
+          </Link>
+        </nav>
+
+        {/* Mobile toggle */}
+        <button
+          type="button"
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+          onClick={() => setOpen((v) => !v)}
+          className="md:hidden inline-flex items-center justify-center rounded-md p-2 text-[#4B5D67] hover:text-[#333333] hover:bg-[#E7E2DA] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FFC857]"
+        >
+          {open ? <FiX size={22} /> : <FiMenu size={22} />}
+        </button>
+      </div>
+
+      {/* Mobile panel */}
+      {open && (
+        <div id="mobile-menu" className="md:hidden border-t border-[#E7E2DA] bg-[#F5F1EB]/95">
+          <div className="px-4 py-4 flex flex-col gap-3">
+            {navigation.primary.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="text-[#4B5D67] hover:text-[#333333]"
+              >
+                {item.label}
+              </Link>
+            ))}
+            <Link
+              href={navigation.cta.href}
+              onClick={() => setOpen(false)}
+              className="mt-2 inline-flex items-center justify-center rounded-md bg-[#FFC857] text-[#333333] px-3 py-2 font-medium shadow hover:bg-[#ffda79]"
             >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                >
-                    <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M4 6h16M4 12h16m-7 6h7"
-                    />
-                </svg>
-            </button>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex text-gray-200 space-x-6">
-                <Link href="/" className="hover:text-white">
-                    Home
-                </Link>
-                <Link href="/ihsan" className="hover:text-white">
-                    Ihsan
-                </Link>
-                <Link href="/wellness" className="hover:text-white">
-                    Wellness
-                </Link>
-            </nav>
-
-            {/* Mobile Slide-in Menu */}
-            <div
-                className={`fixed top-0 left-0 h-full w-3/4 bg-gray-800 text-gray-200 transform ${menuOpen ? "translate-x-0" : "-translate-x-full"
-                    } transition-transform duration-300 ease-in-out z-50`}
-            >
-                <div className="p-4 flex flex-col h-full">
-                    {/* Close Button */}
-                    <button
-                        onClick={closeMenu}
-                        className="self-end text-gray-300 hover:text-white"
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-6 w-6"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M6 18L18 6M6 6l12 12"
-                            />
-                        </svg>
-                    </button>
-
-                    {/* Navigation Links */}
-                    <nav className="mt-8 space-y-4">
-                        <Link href="/" className="text-gray-300 hover:text-white text-lg flex items-center" onClick={closeMenu}>
-                            <FaHome className="mr-2" /> Home
-                        </Link>
-                        <Link href="/ihsan" className="text-gray-300 hover:text-white text-lg flex items-center" onClick={closeMenu}>
-                            <FaStar className="mr-2" /> Ihsan
-                        </Link>
-                        <Link href="/wellness" className="text-gray-300 hover:text-white text-lg flex items-center" onClick={closeMenu}>
-                            <FaLeaf className="mr-2" /> Wellness
-                        </Link>
-                        <Link
-                            href="https://github.com/ali-ismail-1"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-gray-300 hover:text-white text-lg flex items-center"
-                        >
-                            <FaGithub className="mr-2" /> GitHub
-                        </Link>
-                        <Link
-                            href="https://www.linkedin.com/in/ali-ismail-35196615/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-gray-300 hover:text-white text-lg flex items-center"
-                        >
-                            <FaLinkedin className="mr-2" /> LinkedIn
-                        </Link>
-                        <Link
-                            href="https://twitter.com/Ali_F_Ismail"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-gray-300 hover:text-white text-lg flex items-center"
-                        >
-                            <FaTwitter className="mr-2" /> Twitter
-                        </Link>
-                    </nav>
-
-                </div>
-            </div>
-        </header>
-    );
+              {navigation.cta.label}
+            </Link>
+          </div>
+        </div>
+      )}
+    </header>
+  );
 }
