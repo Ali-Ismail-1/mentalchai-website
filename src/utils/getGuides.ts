@@ -9,10 +9,10 @@ import { Guide } from '@/types/guide';
  * @param {string} dirPath - The path to the directory containing Markdown files.
  * @returns {Promise<Guide[]>} - An array of guides.
  */
-export async function getGuides(dirPath: string): Promise<Guide[]> {
-  const files = fs.readdirSync(dirPath).filter((file) => file.endsWith('.md'));
+export function getGuides(dirPath: string): Guide[] {
+  const files = fs.readdirSync(dirPath).filter((file: string) => file.endsWith('.md'));
 
-  return files.map((file) => {
+  return files.map((file: string) => {
     const filePath = path.join(dirPath, file);
     const fileContents = fs.readFileSync(filePath, 'utf8');
     const { data } = matter(fileContents);

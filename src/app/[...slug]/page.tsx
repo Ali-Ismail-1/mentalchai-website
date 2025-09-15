@@ -6,14 +6,16 @@ import { remark } from 'remark';
 import html from 'remark-html';
 import Link from 'next/link';
 
-export default async function Page({ params }) {
-  const slugArray = params.slug;
+type PageProps = { params: Promise<{ slug: string[] }> };
+
+export default async function Page({ params }: PageProps) {  
+  const { slug: slugArray } = await params;
   const slug = slugArray[slugArray.length - 1];
 
   const markdownDir = path.join(process.cwd(), 'public/content/markdown');
   const markdownFiles = getMarkdownFiles(markdownDir);
 
-  const matchingFile = markdownFiles.find((file) => {
+  const matchingFile = markdownFiles.find((file: string) => {
     const fileContents = fs.readFileSync(file, 'utf8');
     const { data } = matter(fileContents);
     const fileSlug = data.slug || path.basename(file, '.md');
@@ -30,7 +32,7 @@ export default async function Page({ params }) {
   const processedContent = await remark().use(html).process(content);
   const contentHtml = processedContent.toString();
 
-  const breadcrumbs = slugArray.map((slug, index) => {
+  const breadcrumbs = slugArray.map((slug: string, index: number) => {
     const href = '/' + slugArray.slice(0, index + 1).join('/');
     return (
       <span key={href}>
@@ -52,7 +54,7 @@ export default async function Page({ params }) {
         {breadcrumbs}
       </nav>
       <article className="prose mx-auto">
-        <h1>{data.title}</h1>
+        <h1>{(data as { title: string }).title}</h1>
         <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
       </article>
     </div>
@@ -65,11 +67,11 @@ export default async function Page({ params }) {
  * @param {string} dirPath - The directory path to read files from
  * @returns {string[]} - An array of file paths
  */
-function getMarkdownFiles(dir) {
+function getMarkdownFiles(dir: string): string[] {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
-  const files = entries.flatMap((entry) => {
+  const files = entries.flatMap((entry: fs.Dirent) => {
     const fullPath = path.join(dir, entry.name);
     return entry.isDirectory() ? getMarkdownFiles(fullPath) : fullPath;
   });
-  return files.filter((file) => file.endsWith('.md'));
+  return files.filter((file: string) => file.endsWith('.md'));
 }

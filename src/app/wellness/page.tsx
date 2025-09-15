@@ -4,12 +4,12 @@ import Link from 'next/link';
 import getFolders from '@/utils/getFolders';
 import { Folder } from '@/types/folder';
 
-export default async function WellnessPage() {
+export default function WellnessPage() {
     const dirPath = path.join(process.cwd(), 'src/app/wellness');
 
     let folders: Folder[] = [];
     try {
-        folders = await getFolders(dirPath);
+        folders = getFolders(dirPath);
     }
     catch (error) {
         console.error("Error fetching guides: ", error);
@@ -21,7 +21,7 @@ export default async function WellnessPage() {
             {folders.length === 0 ? (<p>No topics available at the moment.</p>)
                 : (
                     <ul className="space-y-4">
-                        {folders.map((folder) => (
+                        {folders.map((folder: Folder) => (
                             <li key={folder}>
                                 <Link className='link' href={`/wellness/${folder}`}>
                                     {folder.charAt(0).toUpperCase() + folder.slice(1)}
