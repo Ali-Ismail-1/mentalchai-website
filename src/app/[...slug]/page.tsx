@@ -5,6 +5,8 @@ import { remark } from 'remark';
 import html from 'remark-html';
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { ContentMeta as ContentMetaSchema } from '@/types/content';
+import type { ContentMeta } from '@/types/content';
 import Breadcrumbs from '@/app/components/Breadcrumbs';
 
 const CONTENT_ROOT = path.join(process.cwd(), 'public', 'content', 'markdown');
@@ -42,8 +44,10 @@ export async function generateMetadata(
   if (!match) return { title: slug[slug.length - 1] };
 
   const { data } = matter(fs.readFileSync(match, 'utf8'));
-  const title = (data as any).title || slug[slug.length - 1];
-  const description = (data as any).description;
+  const parsed = ContentMetaSchema.safeParse(data);
+  const meta: Partial<ContentMeta> = parsed.success ? parsed.data : {};
+  const title = meta.title ?? slug[slug.length - 1];
+  const description = meta.description ?? '';
 
   return {
     title,
@@ -64,7 +68,10 @@ export default async function Page({ params }: PageProps) {
   const matchingFile = markdownFiles.find((file: string) => {
     const fileContents = fs.readFileSync(file, 'utf8');
     const { data } = matter(fileContents);
-    const fileSlug = (data as any).slug || path.basename(file, '.md');
+    const parsed = ContentMetaSchema.safeParse(data);
+    const meta: Partial<ContentMeta> = parsed.success ? parsed.data : {};
+    const fileSlug = meta.slug ?? path.basename(file, '.md');
+
     // Prefer exact path match; fallback to last segment match for older files
     const rel = path.relative(CONTENT_ROOT, file).replace(/\\/g, '/').replace(/\.md$/, '');
     const parts = rel.split('/');
@@ -77,9 +84,23 @@ export default async function Page({ params }: PageProps) {
 
   const fileContents = fs.readFileSync(matchingFile, 'utf8');
   const { content, data } = matter(fileContents);
+  const parsed = ContentMetaSchema.safeParse(data);
+  const meta: Partial<ContentMeta> = parsed.success ? parsed.data : {};
 
   const processedContent = await remark().use(html).process(content);
   const contentHtml = processedContent.toString();
+
+  const breadcrumbs = slugArray.map((segment: string, index: number) => {
+    const href = '/' + slugArray.slice(0, index + 1).join('/');
+    return (
+      <span key={href}>
+        <Link href={href} className="text-blue-600 hover:underline">
+          {segment.replace(/-/g, ' ')}
+        </Link>
+        {index < slugArray.length - 1 && ' > '}
+      </span>
+    )
+  })
 
   return (
     <div className="p-6">
@@ -88,10 +109,10 @@ export default async function Page({ params }: PageProps) {
           home
         </Link>
         {' > '}
-        <Breadcrumbs segments={slugArray} />
+        {breadcrumbs}
       </nav>
       <article className="prose mx-auto">
-        <h1>{(data as { title?: string }).title || slug}</h1>
+        <h1>{meta.title ?? slug}</h1>
         <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
       </article>
     </div>
