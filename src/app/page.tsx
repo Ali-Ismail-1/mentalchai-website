@@ -2,6 +2,11 @@
 import Link from "next/link";
 import { leadMagnets } from "@/lib/leadMagnets";
 
+export const metadata = {
+  title: 'Mentalchai — Clarity, Resilience, and Holistic Growth',
+  description: 'Calm, grounded, and practical tools to design a life of balance, presence, and sustainable mastery.',
+};
+
 export default function Home() {
   const featured = leadMagnets.find((m) => m.featured) || leadMagnets[0];
 
@@ -102,6 +107,69 @@ export default function Home() {
               </p>
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Why MentalChai exists */}
+      <section className="py-12 border-t border-[#E7E2DA] bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h3 className="text-2xl font-bold text-[#333333] mb-3">Why MentalChai exists</h3>
+            <p className="text-[#4B5D67]">
+              MentalChai helps you find clarity, resilience, and holistic growth—blending timeless wisdom with practical frameworks.
+              Calm, grounded, and actionable—so you can build sustainable mastery without burnout.
+            </p>
+            <div className="mt-6">
+              <Link href="/about" className="text-[#4B5D67] underline hover:text-[#333333]">Read the story →</Link>
+            </div>
+          </div>
+          <div className="rounded-lg border border-[#E7E2DA] bg-[#F5F1EB] p-6">
+            <ul className="space-y-2 text-[#4B5D67]">
+              <li>🌿 Grounded Wisdom</li>
+              <li>🧠 Clarity & Practical Frameworks</li>
+              <li>⚡ Sustainable Rhythms</li>
+              <li>🛡️ Resilience & Boundaries</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Latest Guides */}
+      <section className="py-12 border-t border-[#E7E2DA] bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex items-end justify-between mb-6">
+            <h3 className="text-2xl font-bold text-[#333333]">Latest Guides</h3>
+            <Link href="/guides" className="text-[#4B5D67] underline hover:text-[#333333]">Browse all →</Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {leadMagnets.slice(0, 3).map((g) => (
+              <div key={g.slug} className="rounded-lg border border-[#E7E2DA] bg-white p-6 shadow-sm hover:shadow transition">
+                <h4 className="text-lg font-semibold text-[#333333]">{g.title}</h4>
+                <p className="mt-2 text-sm text-[#4B5D67]">{g.description}</p>
+                <div className="mt-4">
+                  <Link href={g.url} className="inline-flex rounded-md bg-[#FFC857] text-[#333333] px-4 py-2 font-medium hover:bg-[#ffda79]">
+                    {g.ctaLabel}
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter Re-invite */}
+      <section className="py-12 border-t border-[#E7E2DA] bg-[#F5F1EB]">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <h3 className="text-2xl font-bold text-[#333333] mb-6">Stay in the loop</h3>
+          <p className="text-lg text-[#4B5D67] mb-6">
+            Join our newsletter to receive updates, guides, and exclusive content.
+          </p>
+          <Link
+            href="/newsletter"
+            className="inline-flex items-center justify-center rounded-md bg-[#FFC857] text-[#333333] px-5 py-3 font-medium shadow hover:bg-[#ffda79] transition-colors"
+          >
+            Join the Newsletter
+          </Link>
         </div>
       </section>
     </div>
