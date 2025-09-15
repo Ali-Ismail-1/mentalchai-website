@@ -1,19 +1,9 @@
 // src/app/islam/page.tsx
 import Link from 'next/link';
-import { getGuides } from '@/utils/getGuides';
-import { Guide } from '@/types/guide';
-import { getSectionDir } from '@/lib/paths';
+import { listSectionGuides } from '@/lib/content';
 
 export default function IslamPage() {
-    const dir = getSectionDir('ihsan');
-
-    let guides: Guide[] = [];
-    try {
-        guides = getGuides(dir);
-    }
-    catch (error) {
-        console.error("Error fetching guides: ", error);
-    }
+    const guides = listSectionGuides('ihsan');
 
     return (
         <div className="p-6">
