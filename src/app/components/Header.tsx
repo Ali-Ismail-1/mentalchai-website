@@ -4,6 +4,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { FiMenu, FiX } from 'react-icons/fi';
+import { navigation } from '@/lib/site';
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -16,6 +17,9 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-[#F5F1EB]/90 backdrop-blur border-b border-[#E7E2DA] shadow-sm">
+      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-2 focus:z-50 bg-[#FFC857] text-[#333333] px-3 py-1 rounded">
+        Skip to content
+      </a>
       <div className="mx-auto max-w-7xl h-14 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         <Link href="/" className="text-[#333333] font-semibold tracking-tight text-lg">
           Mentalchai
@@ -23,14 +27,16 @@ export default function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
-          <Link href="/ihsan" className="text-[#4B5D67] hover:text-[#333333] transition-colors">Ihsan</Link>
-          <Link href="/wellness" className="text-[#4B5D67] hover:text-[#333333] transition-colors">Wellness</Link>
-          <Link href="/guides" className="text-[#4B5D67] hover:text-[#333333] transition-colors">Guides</Link>
+          {navigation.primary.map((item) => (
+            <Link key={item.href} href={item.href} className="text-[#4B5D67] hover:text-[#333333] transition-colors">
+              {item.label}
+            </Link>
+          ))}
           <Link
-            href="/newsletter"
+            href={navigation.cta.href}
             className="rounded-md bg-[#FFC857] text-[#333333] px-3 py-2 font-medium shadow hover:bg-[#ffda79] transition-colors"
           >
-            Join the Newsletter
+            {navigation.cta.label}
           </Link>
         </nav>
 
@@ -51,15 +57,17 @@ export default function Header() {
       {open && (
         <div id="mobile-menu" className="md:hidden border-t border-[#E7E2DA] bg-[#F5F1EB]/95">
           <div className="px-4 py-4 flex flex-col gap-3">
-            <Link href="/ihsan" onClick={() => setOpen(false)} className="text-[#4B5D67] hover:text-[#333333]">Ihsan</Link>
-            <Link href="/wellness" onClick={() => setOpen(false)} className="text-[#4B5D67] hover:text-[#333333]">Wellness</Link>
-            <Link href="/guides" onClick={() => setOpen(false)} className="text-[#4B5D67] hover:text-[#333333]">Guides</Link>
+            {navigation.primary.map((item) => (
+              <Link key={item.href} href={item.href} onClick={() => setOpen(false)} className="text-[#4B5D67] hover:text-[#333333]">
+                {item.label}
+              </Link>
+            ))}
             <Link
-              href="/newsletter"
+              href={navigation.cta.href}
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex items-center justify-center rounded-md bg-[#FFC857] text-[#333333] px-3 py-2 font-medium shadow hover:bg-[#ffda79]"
             >
-              Join the Newsletter
+              {navigation.cta.label}
             </Link>
           </div>
         </div>
