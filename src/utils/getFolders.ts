@@ -7,9 +7,9 @@ import { Folder } from '@/types/folder';
  * @param {string} dirPath - The path to the directory containing Markdown files.
  * @returns {Promise<Folder[]>} - An array of guides.
  */
-export default async function getFolders(dirPath: string): Promise<Folder[]> {
+export default function getFolders(dirPath: string): Folder[] {
   return fs
     .readdirSync(dirPath, { withFileTypes: true })
-    .filter((entry) => entry.isDirectory())
-    .map((folder) => folder.name);
+    .filter((entry: fs.Dirent) => entry.isDirectory())
+    .map((folder: fs.Dirent) => folder.name);
 }

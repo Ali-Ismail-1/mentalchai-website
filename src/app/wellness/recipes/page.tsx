@@ -4,13 +4,13 @@ import Link from 'next/link';
 import { getGuides } from '@/utils/getGuides';
 import { Guide } from '@/types/guide';
 
-export default async function RecipesPage() {
+export default function RecipesPage() {
 
     const dir = path.join(process.cwd(), 'src/app/wellness/recipes');
 
     let guides: Guide[] = [];
     try {
-        guides = await getGuides(dir);
+        guides = getGuides(dir);
     }
     catch (error) {
         console.error("Error fetching guides: ", error);
