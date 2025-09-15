@@ -1,20 +1,10 @@
 // src/app/wellness/recipes/page.tsx
 import Link from 'next/link';
-import { getGuides } from '@/utils/getGuides';
-import { Guide } from '@/types/guide';
-import { getSectionDir } from '@/lib/paths';
+import { listSectionGuides } from '@/lib/content';
 
 export default function RecipesPage() {
 
-    const dir = getSectionDir('wellness/recipes');
-
-    let guides: Guide[] = [];
-    try {
-        guides = getGuides(dir);
-    }
-    catch (error) {
-        console.error("Error fetching guides: ", error);
-    }
+    const guides = listSectionGuides('wellness/recipes');
 
     return (
         <div className="p-6">

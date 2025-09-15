@@ -1,19 +1,10 @@
 // src/app/wellness/page.tsx
 import Link from 'next/link';
-import getFolders from '@/utils/getFolders';
 import { Folder } from '@/types/folder';
-import { getSectionDir } from '@/lib/paths';
+import { listSectionFolders } from '@/lib/content';
 
 export default function WellnessPage() {
-    const dirPath = getSectionDir('wellness');
-
-    let folders: Folder[] = [];
-    try {
-        folders = getFolders(dirPath);
-    }
-    catch (error) {
-        console.error("Error fetching guides: ", error);
-    }
+    const folders = listSectionFolders('wellness');
 
     return (
         <div className="p-6">
