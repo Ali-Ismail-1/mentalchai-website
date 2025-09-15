@@ -7,6 +7,8 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { ContentMeta as ContentMetaSchema } from '@/types/content';
 import type { ContentMeta } from '@/types/content';
+import ContentLayout from '@/app/components/ContentLayout';
+import Breadcrumbs from '@/app/components/Breadcrumbs';
 
 const CONTENT_ROOT = path.join(process.cwd(), 'public', 'content', 'markdown');
 
@@ -110,10 +112,11 @@ export default async function Page({ params }: PageProps) {
         {' > '}
         {breadcrumbs}
       </nav>
-      <article className="prose mx-auto">
-        <h1>{meta.title ?? slug}</h1>
+      <ContentLayout
+        title={meta.title ?? slug}
+        header={<Breadcrumbs segments={slugArray} />}>
         <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
-      </article>
+      </ContentLayout>
     </div>
   );
 }
