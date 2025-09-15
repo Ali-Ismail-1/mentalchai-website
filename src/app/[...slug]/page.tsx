@@ -7,7 +7,6 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { ContentMeta as ContentMetaSchema } from '@/types/content';
 import type { ContentMeta } from '@/types/content';
-import Breadcrumbs from '@/app/components/Breadcrumbs';
 
 const CONTENT_ROOT = path.join(process.cwd(), 'public', 'content', 'markdown');
 
