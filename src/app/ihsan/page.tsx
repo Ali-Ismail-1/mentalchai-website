@@ -3,10 +3,11 @@ import path from 'path';
 import Link from 'next/link';
 import { getGuides } from '@/utils/getGuides';
 import { Guide } from '@/types/guide';
+import { getSectionDir } from '@/lib/paths';
 
 export default function IslamPage() {
 
-    const dir = path.join(process.cwd(), 'src/app/ihsan');
+    const dir = getSectionDir('ihsan');
 
     let guides: Guide[] = [];
     try {

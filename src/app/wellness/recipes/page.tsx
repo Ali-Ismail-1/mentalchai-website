@@ -3,10 +3,11 @@ import path from 'path';
 import Link from 'next/link';
 import { getGuides } from '@/utils/getGuides';
 import { Guide } from '@/types/guide';
+import { getSectionDir } from '@/lib/paths';
 
 export default function RecipesPage() {
 
-    const dir = path.join(process.cwd(), 'src/app/wellness/recipes');
+    const dir = getSectionDir('wellness/recipes');
 
     let guides: Guide[] = [];
     try {
