@@ -3,8 +3,24 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { navigation } from '@/lib/site';
+
+function NavLink({ href, label }: { href: string; label: string }) {
+  const pathname = usePathname();
+  const active = href === '/'
+    ? pathname === '/'
+    : pathname.startsWith(href);
+  return (
+    <Link
+      href={href}
+      className={`transition-colors ${active ? 'text-[#333333]' : 'text-[#4B5D67] hover:text-[#333333]'}`}
+    >
+      {label}
+    </Link>
+  );
+}
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -28,9 +44,7 @@ export default function Header() {
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
           {navigation.primary.map((item) => (
-            <Link key={item.href} href={item.href} className="text-[#4B5D67] hover:text-[#333333] transition-colors">
-              {item.label}
-            </Link>
+            <NavLink key={item.href} href={item.href} label={item.label} />
           ))}
           <Link
             href={navigation.cta.href}
@@ -58,7 +72,12 @@ export default function Header() {
         <div id="mobile-menu" className="md:hidden border-t border-[#E7E2DA] bg-[#F5F1EB]/95">
           <div className="px-4 py-4 flex flex-col gap-3">
             {navigation.primary.map((item) => (
-              <Link key={item.href} href={item.href} onClick={() => setOpen(false)} className="text-[#4B5D67] hover:text-[#333333]">
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="text-[#4B5D67] hover:text-[#333333]"
+              >
                 {item.label}
               </Link>
             ))}
