@@ -13,12 +13,18 @@ const config: Config = {
           charcoal: 'var(--color-calm-charcoal)',
           grayblue: 'var(--color-calm-grayblue)',
           sand: 'var(--color-calm-sand)',
+          base: "#FAFAF8",     // soft off-white (backgrounds)
+          sage: "#A8BDA0",     // grounded green, natural          
         },
         vibrant: {
-          teal: 'var(--color-vibrant-teal)',
-          amber: 'var(--color-vibrant-amber)',
-          coral: 'var(--color-vibrant-coral)',
-          indigo: 'var(--color-vibrant-indigo)',
+          // amber: 'var(--color-vibrant-amber)',
+          // coral: 'var(--color-vibrant-coral)',
+          // indigo: 'var(--color-vibrant-indigo)',
+          // teal: 'var(--color-vibrant-teal)',
+          amber: "#E6B74E",    // warm CTA (softer golden amber)
+          teal: "#2AB7CA",     // fresh clarity accent
+          coral: "#F25F5C",    // energy + creativity
+          indigo: "#3F51B5",   // depth, reflection
         },
       },
     },
