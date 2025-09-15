@@ -21,8 +21,9 @@ export default function Hero() {
 
           {/* Subheadline */}
           <p className="mt-4 text-lg text-calm-grayblue">
-            Practical systems and timeless wisdom to stay anchored, grow with clarity, 
-            and return to balance — again and again.
+            Practical systems and timeless wisdom to  <br />
+            stay anchored, grow with clarity, 
+            and return to balance as life unfolds.
           </p>
 
           {/* Icons Row */}

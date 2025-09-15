@@ -9,7 +9,7 @@ export default function NewsletterInvite() {
           Weekly clarity, built to last.
         </h3>
         <p className="text-[#4B5D67] mt-2">
-          Systems, practices, and timeless principles you can return to for decades.
+          Systems, practices, and timeless principles you can lean on through the seasons of life.
         </p>
         <div className="mt-6">
           <Link
