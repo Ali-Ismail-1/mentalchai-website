@@ -1,5 +1,4 @@
 // src/app/wellness/page.tsx
-import path from 'path';
 import Link from 'next/link';
 import getFolders from '@/utils/getFolders';
 import { Folder } from '@/types/folder';

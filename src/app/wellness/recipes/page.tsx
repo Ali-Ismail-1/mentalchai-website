@@ -1,5 +1,4 @@
 // src/app/wellness/recipes/page.tsx
-import path from 'path';
 import Link from 'next/link';
 import { getGuides } from '@/utils/getGuides';
 import { Guide } from '@/types/guide';
