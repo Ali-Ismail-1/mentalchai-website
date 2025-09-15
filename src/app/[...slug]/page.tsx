@@ -5,6 +5,7 @@ import { remark } from 'remark';
 import html from 'remark-html';
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import Breadcrumbs from '@/app/components/Breadcrumbs';
 
 const CONTENT_ROOT = path.join(process.cwd(), 'public', 'content', 'markdown');
 
@@ -80,18 +81,6 @@ export default async function Page({ params }: PageProps) {
   const processedContent = await remark().use(html).process(content);
   const contentHtml = processedContent.toString();
 
-  const breadcrumbs = slugArray.map((segment: string, index: number) => {
-    const href = '/' + slugArray.slice(0, index + 1).join('/');
-    return (
-      <span key={href}>
-        <Link href={href} className="text-blue-600 hover:underline">
-          {segment.replace(/-/g, ' ')}
-        </Link>
-        {index < slugArray.length - 1 && ' > '}
-      </span>
-    );
-  });
-
   return (
     <div className="p-6">
       <nav className="mb-4 text-gray-600">
@@ -99,7 +88,7 @@ export default async function Page({ params }: PageProps) {
           home
         </Link>
         {' > '}
-        {breadcrumbs}
+        <Breadcrumbs segments={slugArray} />
       </nav>
       <article className="prose mx-auto">
         <h1>{(data as { title?: string }).title || slug}</h1>
