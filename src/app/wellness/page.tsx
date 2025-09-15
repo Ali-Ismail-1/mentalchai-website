@@ -1,11 +1,11 @@
 // src/app/wellness/page.tsx
-import path from 'path';
 import Link from 'next/link';
 import getFolders from '@/utils/getFolders';
 import { Folder } from '@/types/folder';
+import { getSectionDir } from '@/lib/paths';
 
 export default function WellnessPage() {
-    const dirPath = path.join(process.cwd(), 'src/app/wellness');
+    const dirPath = getSectionDir('wellness');
 
     let folders: Folder[] = [];
     try {
