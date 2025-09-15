@@ -6,8 +6,10 @@ import { remark } from 'remark';
 import html from 'remark-html';
 import Link from 'next/link';
 
-export default async function Page({ params }: { params: { slug: string[] } }) {
-  const slugArray = params.slug;
+type PageProps = { params: Promise<{ slug: string[] }> };
+
+export default async function Page({ params }: PageProps) {  
+  const { slug: slugArray } = await params;
   const slug = slugArray[slugArray.length - 1];
 
   const markdownDir = path.join(process.cwd(), 'public/content/markdown');
@@ -52,7 +54,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
         {breadcrumbs}
       </nav>
       <article className="prose mx-auto">
-        <h1>{data.title}</h1>
+        <h1>{(data as { title: string }).title}</h1>
         <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
       </article>
     </div>
